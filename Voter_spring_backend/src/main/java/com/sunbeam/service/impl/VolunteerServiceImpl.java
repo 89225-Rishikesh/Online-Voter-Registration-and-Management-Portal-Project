@@ -57,3 +57,12 @@ public class VolunteerServiceImpl implements VolunteerService {
         Volunteer savedVolunteer = volunteerDao.save(volunteer);
         return convertToDto(savedVolunteer);
     }
+    @Override
+    public VolunteerDto getVolunteerById(Integer volunteerId) {
+        Optional<Volunteer> volunteerOptional = volunteerDao.findById(volunteerId);
+        if (volunteerOptional.isPresent()) {
+            return convertToDto(volunteerOptional.get());
+        }
+        throw new RuntimeException("Volunteer not found with id: " + volunteerId);
+    }
+}
