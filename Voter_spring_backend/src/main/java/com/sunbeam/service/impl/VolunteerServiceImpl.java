@@ -65,4 +65,91 @@ public class VolunteerServiceImpl implements VolunteerService {
         }
         throw new RuntimeException("Volunteer not found with id: " + volunteerId);
     }
+    
+    @Override
+    public List<VolunteerDto> getAllVolunteers() {
+        List<Volunteer> volunteers = volunteerDao.findAllOrderBySubmittedOnDesc();
+        List<VolunteerDto> volunteerDtos = new ArrayList<>();
+        
+        for (Volunteer volunteer : volunteers) {
+            volunteerDtos.add(convertToDto(volunteer));
+        }
+        
+        return volunteerDtos;
+    }
+    
+    @Override
+    public List<VolunteerDto> getVolunteersByRole(VolunteerRole role) {
+        List<Volunteer> volunteers = volunteerDao.findByRole(role);
+        List<VolunteerDto> volunteerDtos = new ArrayList<>();
+        
+        for (Volunteer volunteer : volunteers) {
+            volunteerDtos.add(convertToDto(volunteer));
+        }
+        
+        return volunteerDtos;
+    }
+    
+    @Override
+    public List<VolunteerDto> getVolunteersByUserId(Integer userId) {
+        List<Volunteer> volunteers = volunteerDao.findByUserUserId(userId);
+        List<VolunteerDto> volunteerDtos = new ArrayList<>();
+        
+        for (Volunteer volunteer : volunteers) {
+            volunteerDtos.add(convertToDto(volunteer));
+        }
+        
+        return volunteerDtos;
+    }
+    
+    @Override
+    public VolunteerDto updateVolunteer(Integer volunteerId, VolunteerDto volunteerDto) {
+        Optional<Volunteer> volunteerOptional = volunteerDao.findById(volunteerId);
+        if (volunteerOptional.isPresent()) {
+            Volunteer volunteer = volunteerOptional.get();
+            
+            volunteer.setName(volunteerDto.getName());
+            volunteer.setEmail(volunteerDto.getEmail());
+            volunteer.setPhone(volunteerDto.getPhone());
+            volunteer.setRole(volunteerDto.getRole());
+            volunteer.setInterest(volunteerDto.getInterest());
+            
+            Volunteer updatedVolunteer = volunteerDao.save(volunteer);
+            return convertToDto(updatedVolunteer);
+        }
+        throw new RuntimeException("Volunteer not found with id: " + volunteerId);
+    }
+    
+    @Override
+    public void deleteVolunteer(Integer volunteerId) {
+        if (volunteerDao.existsById(volunteerId)) {
+            volunteerDao.deleteById(volunteerId);
+        } else {
+            throw new RuntimeException("Volunteer not found with id: " + volunteerId);
+        }
+    }
+    
+    @Override
+    public boolean existsByEmail(String email) {
+        return volunteerDao.existsByEmail(email);
+    }
+    
+    @Override
+    public boolean existsByPhone(String phone) {
+        return volunteerDao.existsByPhone(phone);
+    }
+    
+    private VolunteerDto convertToDto(Volunteer volunteer) {
+        VolunteerDto dto = new VolunteerDto();
+        dto.setVolunteerId(volunteer.getVolunteerId());
+        dto.setUserId(volunteer.getUser() != null ? volunteer.getUser().getUserId() : null);
+        dto.setName(volunteer.getName());
+        dto.setEmail(volunteer.getEmail());
+        dto.setPhone(volunteer.getPhone());
+        dto.setRole(volunteer.getRole());
+        dto.setInterest(volunteer.getInterest());
+        dto.setSubmittedOn(volunteer.getSubmittedOn());
+        return dto;
+    }
 }
+
