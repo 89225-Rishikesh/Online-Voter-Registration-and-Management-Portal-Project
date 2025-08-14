@@ -2,12 +2,20 @@
 
 export default function Navbar({ activeSection, setActiveSection, user, setUser }) {
   const navItems = [
-    { id: "home", label: "Home", icon: "🏠" },
-    { id: "register-voter", label: "Register as New Voter", icon: "📝" },
-    { id: "search-voter", label: "Search Voter List", icon: "🔍" },
-    { id: "lodge-complaint", label: "Lodge Complaint", icon: "📋" },
-    { id: "volunteer-portal", label: "Volunteer Portal", icon: "👥" },
-    { id: "voter-education", label: "Voter Education", icon: "📚" },
+    // { id: "home", label: "Home", icon: "🏠" },
+    // { id: "register-voter", label: "Register as New Voter", icon: "📝" },
+    // { id: "search-voter", label: "Search Voter List", icon: "🔍" },
+    // { id: "lodge-complaint", label: "Lodge Complaint", icon: "📋" },
+    // { id: "volunteer-portal", label: "Volunteer Portal", icon: "👥" },
+    // { id: "voter-education", label: "Voter Education", icon: "📚" },
+    // { id: "admin", label: "Admin Portal", icon: "🔐" },
+    { id: "home", label: "Home" },
+    { id: "register-voter", label: "Register as New Voter"},
+    { id: "search-voter", label: "Search Voter List"},
+    { id: "lodge-complaint", label: "Lodge Complaint"},
+    { id: "volunteer-portal", label: "Volunteer Portal"},
+    { id: "voter-education", label: "Voter Education"},
+    { id: "admin", label: "Admin Portal"},
   ]
 
   const handleLogout = () => {
@@ -55,7 +63,8 @@ export default function Navbar({ activeSection, setActiveSection, user, setUser 
                   }}
                   onMouseEnter={(e) => {
                     if (activeSection !== item.id) {
-                      e.target.style.backgroundColor = "rgba(255,255,255,0.1)"
+                      e.target.style.backgroundColor = "#FF9933"
+                      
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -78,7 +87,7 @@ export default function Navbar({ activeSection, setActiveSection, user, setUser 
                   aria-expanded="false"
                   style={{ cursor: "pointer" }}
                 >
-                  👤 {user.username}
+                  👤 {user.role === "admin" ? `Admin: ${user.name || user.username}` : user.username}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
                   <li>
@@ -86,6 +95,13 @@ export default function Navbar({ activeSection, setActiveSection, user, setUser 
                       <small className="text-muted">Role: {user.role}</small>
                     </span>
                   </li>
+                  {user.user_id && (
+                    <li>
+                      <span className="dropdown-item-text">
+                        <small className="text-muted">ID: {user.user_id}</small>
+                      </span>
+                    </li>
+                  )}
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
