@@ -16,17 +16,26 @@ export default function HomePage() {
             color: white !important;
           }
           .nav-link.active {
-            color: #ffc107 !important;
+            // color: #ffc107 !important;
+            color: #151001ff !important;
             font-weight: bold;
           }
-          .btn-primary {
+         
+             .btn-primary {
             background-color: #FF9933;
             border-color: #FF9933;
           }
+
+          // .btn-primary:hover {
+          //   background-color: #e68a00;
+          //   border-color: #e68a00;
+          // }
+          
           .btn-primary:hover {
-            background-color: #e68a00;
+            background-color: #e68a0069;
             border-color: #e68a00;
           }
+
           .card-header {
             background-color: #138808;
             color: white;
@@ -39,15 +48,20 @@ export default function HomePage() {
             color: white;
             border: none;
           }
-          .tab-nav .nav-link.active {
-            background-color: #e68a00;
-            color: #ffc107;
+          // .tab-nav .nav-link.active {
+          //   background-color: #e68a00;
+          //   color: #ffc107;
+          // }
+
+           .tab-nav .nav-link.active {
+            background-color: #e66800df;
+            color: #ffc10703;
           }
           .tab-nav .nav-link:hover:not(.active) {
             background-color: rgba(255, 255, 255, 0.1);
           }
           .tab-content {
-            background-color: #f8f9fa;
+            background-color: #fdfafaff;
             border-top: 4px solid #FF9933;
             border-radius: 0 0 5px 5px;
           }
@@ -86,7 +100,7 @@ export default function HomePage() {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
-                  src="https://images.unsplash.com/photo-1599059813008-11265ba4b7ce"
+                  src="https://upload.wikimedia.org/wikipedia/commons/4/43/India_voting_2014.jpg"
                   className="d-block w-100"
                   alt="People voting in a polling booth"
                   style={{ height: "400px", objectFit: "cover" }}
@@ -99,7 +113,7 @@ export default function HomePage() {
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://images.unsplash.com/photo-1577122743868-639e8b4e084b"
+                  src="https://imaghttps://upload.wikimedia.org/wikipedia/commons/2/2c/Supporters_of_Muslim_Brotherhood%2C_Tahrir_Square.jpges.unsplash.com/photo-1577122743868-639e8b4e084b"
                   className="d-block w-100"
                   alt="Crowd celebrating democracy"
                   style={{ height: "400px", objectFit: "cover" }}
@@ -110,7 +124,7 @@ export default function HomePage() {
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://images.unsplash.com/photo-1592982917060-7e2e4b3a2a4b"
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Election_rally_in_India.jpg"
                   className="d-block w-100"
                   alt="Election rally"
                   style={{ height: "400px", objectFit: "cover" }}
@@ -140,7 +154,7 @@ export default function HomePage() {
             </button>
           </div>
 
-          <div className="row g-4">
+          {/* <div className="row g-4">
             <div className="col-lg-4 col-md-6">
               <div
                 className="card h-100 shadow-sm border-0"
@@ -192,67 +206,179 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+                
+                <div className="row g-4">
+                  <div className="col-lg-4 col-md-6">
+                    <div
+                      className="card h-100 shadow-sm border-0"
+                      style={{ borderTop: "4px solid #FF9933" }}
+                    >
+                      <div className="card-body p-4">
+                        <h3 className="card-title fw-bold" style={{ color: "#FF9933" }}>
+                          National Election 2025
+                        </h3>
+                        <p className="text-muted mt-2">Date: December 15, 2025</p>
+                        <p className="text-muted">Location: Nationwide</p>
+                        <a
+                          href="https://eci.gov.in/files/category/261-national-elections/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary mt-4"
+                        >
+                          Learn More
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-md-6">
+                    <div
+                      className="card h-100 shadow-sm border-0"
+                      style={{ borderTop: "4px solid #138808" }}
+                    >
+                      <div className="card-body p-4">
+                        <h3 className="card-title fw-bold" style={{ color: "#138808" }}>
+                          State Election - Maharashtra
+                        </h3>
+                        <p className="text-muted mt-2">Date: January 20, 2026</p>
+                        <p className="text-muted">Location: Maharashtra</p>
+                        <a
+                          href="https://eci.gov.in/files/category/261-state-elections/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary mt-4"
+                        >
+                          Learn More
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-md-6">
+                    <div
+                      className="card h-100 shadow-sm border-0"
+                      style={{ borderTop: "4px solid #FF9933" }}
+                    >
+                      <div className="card-body p-4">
+                        <h3 className="card-title fw-bold" style={{ color: "#FF9933" }}>
+                          Local Election - Delhi
+                        </h3>
+                        <p className="text-muted mt-2">Date: February 10, 2026</p>
+                        <p className="text-muted">Location: Delhi</p>
+                        <a
+                          href="https://delhi.gov.in/elections-and-election-commission"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary mt-4"
+                        >
+                          Learn More
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
 
-          <div className="row g-4 mt-5">
-            <div className="col-lg-4 col-md-6">
-              <div
-                className="card h-100 shadow-sm border-0"
-                style={{ borderTop: "4px solid #FF9933" }}
-              >
+          {/* <div className="row g-4 mt-5">
+            {/* Voting Booth */}
+            {/* <div className="col-lg-4 col-md-6">
+              <div className="card h-100 shadow-sm border-0" style={{ borderTop: "4px solid #FF9933" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1599059813008-11265ba4b7ce"
+                  src="https://images.unsplash.com/photo-1621976492233-7d37a0d74d27"
                   className="card-img-top"
                   alt="People voting in a polling booth"
                   style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body p-4">
-                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>
-                    Voting Booth
-                  </h5>
+                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>Voting Booth</h5>
                   <p className="text-muted">Citizens casting their votes.</p>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div
-                className="card h-100 shadow-sm border-0"
-                style={{ borderTop: "4px solid #FF9933" }}
-              >
+            </div> */}
+
+            {/* Democracy Celebration */}
+            {/* <div className="col-lg-4 col-md-6">
+              <div className="card h-100 shadow-sm border-0" style={{ borderTop: "4px solid #FF9933" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1577122743868-639e8b4e084b"
+                  src="https://images.unsplash.com/photo-1602357280300-8f14ac6d0471"
                   className="card-img-top"
                   alt="Crowd celebrating democracy"
                   style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body p-4">
-                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>
-                    Democracy Celebration
-                  </h5>
+                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>Democracy Celebration</h5>
                   <p className="text-muted">Community celebrating election results.</p>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div
-                className="card h-100 shadow-sm border-0"
-                style={{ borderTop: "4px solid #FF9933" }}
-              >
+            </div> */}
+
+            {/* Election Rally */}
+            {/* <div className="col-lg-4 col-md-6">
+              <div className="card h-100 shadow-sm border-0" style={{ borderTop: "4px solid #FF9933" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1592982917060-7e2e4b3a2a4b"
+                  src="https://images.unsplash.com/photo-1611171711919-cb6fe7b9d4c8"
                   className="card-img-top"
                   alt="Election Rally"
                   style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body p-4">
-                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>
-                    Election Rally
-                  </h5>
+                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>Election Rally</h5>
+                  <p className="text-muted">Campaign event in full swing.</p>
+                </div>
+              </div>
+            </div>
+          </div>  */}
+
+          <div className="row g-4 mt-5">
+            {/* Voting Booth */}
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 shadow-sm border-0" style={{ borderTop: "4px solid #FF9933" }}>
+                <img
+                  src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c751c72a-cff2-4194-a377-24b22cce0d38.png"
+                  className="card-img-top"
+                  alt="People voting in a polling booth"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+                <div className="card-body p-4">
+                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>Voting Booth</h5>
+                  <p className="text-muted">Citizens casting their votes.</p>
+                </div>
+              </div>
+            </div>
+          
+            {/* Democracy Celebration */}
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 shadow-sm border-0" style={{ borderTop: "4px solid #FF9933" }}>
+                <img
+                  src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/17cfd65e-914c-4f53-aa54-c469465edf0e.png"
+                  className="card-img-top"
+                  alt="Crowd celebrating democracy"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+                <div className="card-body p-4">
+                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>Democracy Celebration</h5>
+                  <p className="text-muted">Community celebrating election results.</p>
+                </div>
+              </div>
+            </div>
+          
+            {/* Election Rally */}
+            <div className="col-lg-4 col-md-6">
+              <div className="card h-100 shadow-sm border-0" style={{ borderTop: "4px solid #FF9933" }}>
+                <img
+                  src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/dd11898e-0a7a-420e-ae58-7aa1e2754203.png"
+                  className="card-img-top"
+                  alt="Election Rally"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+                <div className="card-body p-4">
+                  <h5 className="card-title fw-bold" style={{ color: "#FF9933" }}>Election Rally</h5>
                   <p className="text-muted">Campaign event in full swing.</p>
                 </div>
               </div>
             </div>
           </div>
+
+
 
           <div className="row g-4 mt-5">
             <div className="col-lg-6 col-md-12">
@@ -267,11 +393,12 @@ export default function HomePage() {
                   <iframe
                     className="w-100"
                     style={{ height: "16rem" }}
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    src="https://www.youtube.com/embed/7-8q4A2E2aM"
                     title="Voting Importance Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
+
                 </div>
               </div>
             </div>
@@ -285,13 +412,14 @@ export default function HomePage() {
                     Election Process
                   </h5>
                   <iframe
-                    className="w-100"
-                    style={{ height: "16rem" }}
-                    src="https://www.youtube.com/embed/3AtDnEC4zak"
-                    title="Election Process Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                  className="w-100"
+                  style={{ height: "16rem" }}
+                  src="https://www.youtube.com/embed/N_WR-X9xTLQ"
+                  title="Election Process Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+
                 </div>
               </div>
             </div>
