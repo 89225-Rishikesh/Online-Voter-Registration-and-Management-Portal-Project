@@ -88,6 +88,7 @@ export default function UserAuth({ setUser, type }) {
                       required
                     />
                   </div>
+                  
 
                   <div className="mb-3">
                     <label className="form-label fw-bold">Password</label>
