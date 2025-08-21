@@ -110,4 +110,6 @@ public class ComplaintsController {
         Long count = complaintsService.countByStatus(status);
         return ResponseEntity.ok(count);
     }
+
 }
+
