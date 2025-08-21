@@ -49,6 +49,8 @@ export default function CandidateInfo() {
           ></div>
         </div>
 
+        
+
         <div className="row g-4">
           {candidates.map((candidate, index) => (
             <div className="col-lg-4 col-md-6" key={index}>
