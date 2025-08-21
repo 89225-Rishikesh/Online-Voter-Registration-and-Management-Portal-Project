@@ -6,6 +6,7 @@ export default function UpcomingElections() {
       location: "Nationwide",
       icon: "🏛️",
     },
+    
     {
       title: "State Election - Maharashtra",
       date: "January 20, 2026",
