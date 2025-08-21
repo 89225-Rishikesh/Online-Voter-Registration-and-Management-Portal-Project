@@ -1,10 +1,11 @@
 package com.sunbeam.service.impl;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class ComplaintsServiceImpl implements ComplaintsService {
     
     private final ComplaintsDao complaintsDao;
     private final VoterDetailsDao voterDetailsDao;
+    private final ModelMapper modelMapper;
 
     @Override
     public ComplaintsDto createComplaint(ComplaintsDto complaintsDto) {
@@ -42,14 +44,14 @@ public class ComplaintsServiceImpl implements ComplaintsService {
         complaint.setStatus(complaintsDto.getStatus());
         complaint.setCreatedAt(LocalDateTime.now());
         Complaints saved = complaintsDao.save(complaint);
-        return convertToDto(saved);
+        return modelMapper.map(saved, ComplaintsDto.class);
     }
 
     @Override
     public ComplaintsDto getComplaintById(Integer complaintId) {
         Optional<Complaints> opt = complaintsDao.findById(complaintId);
         if (opt.isPresent()) {
-            return convertToDto(opt.get());
+            return modelMapper.map(opt.get(), ComplaintsDto.class);
         }
         throw new RuntimeException("Complaint not found with id: " + complaintId);
     }
@@ -57,41 +59,33 @@ public class ComplaintsServiceImpl implements ComplaintsService {
     @Override
     public List<ComplaintsDto> getAllComplaints() {
         List<Complaints> complaints = complaintsDao.findAllOrderByCreatedAtDesc();
-        List<ComplaintsDto> dtos = new ArrayList<>();
-        for (Complaints c : complaints) {
-            dtos.add(convertToDto(c));
-        }
-        return dtos;
+        return complaints.stream()
+                .map(complaint -> modelMapper.map(complaint, ComplaintsDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ComplaintsDto> getComplaintsByVoterId(Integer voterId) {
         List<Complaints> complaints = complaintsDao.findByVoterVoterId(voterId);
-        List<ComplaintsDto> dtos = new ArrayList<>();
-        for (Complaints c : complaints) {
-            dtos.add(convertToDto(c));
-        }
-        return dtos;
+        return complaints.stream()
+                .map(complaint -> modelMapper.map(complaint, ComplaintsDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ComplaintsDto> getComplaintsByStatus(ComplaintStatus status) {
         List<Complaints> complaints = complaintsDao.findByStatus(status);
-        List<ComplaintsDto> dtos = new ArrayList<>();
-        for (Complaints c : complaints) {
-            dtos.add(convertToDto(c));
-        }
-        return dtos;
+        return complaints.stream()
+                .map(complaint -> modelMapper.map(complaint, ComplaintsDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ComplaintsDto> getComplaintsByVoterIdAndStatus(Integer voterId, ComplaintStatus status) {
         List<Complaints> complaints = complaintsDao.findByVoterIdAndStatus(voterId, status);
-        List<ComplaintsDto> dtos = new ArrayList<>();
-        for (Complaints c : complaints) {
-            dtos.add(convertToDto(c));
-        }
-        return dtos;
+        return complaints.stream()
+                .map(complaint -> modelMapper.map(complaint, ComplaintsDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -103,7 +97,7 @@ public class ComplaintsServiceImpl implements ComplaintsService {
             complaint.setText(complaintsDto.getText());
             complaint.setStatus(complaintsDto.getStatus());
             Complaints updated = complaintsDao.save(complaint);
-            return convertToDto(updated);
+            return modelMapper.map(updated, ComplaintsDto.class);
         }
         throw new RuntimeException("Complaint not found with id: " + complaintId);
     }
@@ -122,14 +116,5 @@ public class ComplaintsServiceImpl implements ComplaintsService {
         return complaintsDao.countByStatus(status);
     }
 
-    private ComplaintsDto convertToDto(Complaints complaint) {
-        ComplaintsDto dto = new ComplaintsDto();
-        dto.setComplaintId(complaint.getComplaintId());
-        dto.setVoterId(complaint.getVoter() != null ? complaint.getVoter().getVoterId() : null);
-        dto.setName(complaint.getName());
-        dto.setText(complaint.getText());
-        dto.setStatus(complaint.getStatus());
-        dto.setCreatedAt(complaint.getCreatedAt());
-        return dto;
-    }
+
 }
